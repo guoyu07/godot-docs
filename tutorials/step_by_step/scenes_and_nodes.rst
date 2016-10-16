@@ -1,212 +1,148 @@
 .. _doc_scenes_and_nodes:
 
-Scenes and nodes
+场景(Scene)与节点(Node)
 ================
 
-Introduction
+简介
 ------------
 
 .. image:: /img/chef.png
 
-Imagine for a second that you are not a game developer anymore. Instead,
-You are a chef! Change your hipster outfit for a toque and a double
-breasted jacket. Now, instead of making games, you create new and
-delicious recipes for your guests.
+先设想有那么一瞬间你自己不再是一名游戏开发者了，而是一名大厨！
+你的装备换成了一顶a toque and a double
+breasted jacket。不要考虑制作游戏的事情，你现在的职责是为你的顾客创建新的可口的食谱。
 
-So, how does a chef create a recipe? Recipes are divided in two
-sections, the first is the ingredients and the second is the
-instructions to prepare it. This way, anyone can follow the recipe and
-savor your magnificent creation.
+那么，大厨是怎样创建食谱的呢？食谱分为两部分：首先是食材；然后是工序。这样，任何人都可以根据食谱烹调并品尝到你华丽的创作。
 
-Making games in Godot feels pretty much the same way. Using the engine
-feels like being in a kitchen. In this kitchen, *nodes* are like a
-refrigerator full of fresh ingredients to cook with.
+Godot中制作游戏与这个过程非常相似。Godot引擎就像一个厨房，在这个厨房里，*节点*就像装满新鲜食材的冰箱。
 
-There are many types of nodes, some show images, others play sound,
-other nodes display 3D models, etc. There's dozens of them.
+节点有很多种类型，显示图片的、播放声音的、显示三维模型的，等等。总共有几十个。
 
-Nodes
+节点
 -----
 
-But let's go to the basics. A node is a basic element for creating a
-game, it has the following characteristics:
+让我们从基础谈起。节点是创建游戏的最基础的元素，它具有以下一些特征：
 
--  Has a name.
--  Has editable properties.
--  Can receive a callback to process every frame.
--  Can be extended (to have more functions).
--  Can be added to other nodes as children.
+-  名称
+-  可编辑的属性
+-  能接收回调，以便处理每帧(Frame)相关效果
+-  可以被扩展，以便拥有更多功能
+-  可以被添加为其它节点的子节点
 
 .. image:: /img/tree.png
 
-The last one is very important. Nodes can have other nodes as
-children. When arranged in this way, the nodes become a **tree**.
+最后一点非常重要：节点能让其它节点作为子节点。这样组合出来，就变成了我们常说的**树**状。
 
-In Godot, the ability to arrange nodes in this way creates a powerful
-tool for organizing the projects. Since different nodes have different
-functions, combining them allows to create more complex functions.
+Godot中这种树状组织能力创建了一种强大的项目管理工具。由于不同的节点有不同的功能，通过组合它们就足以创建更复杂的功能。
 
-This is probably not clear yet and it makes little sense, but everything
-will click a few sections ahead. The most important fact to remember for
-now is that nodes exist and can be arranged this way.
+这样讲你肯定还没有什么感觉，但Godot所有的知识点都与上面这些特征有关，你现在只要记住有节点这么个概念，并且节点能按树状组合就好了。
 
-Scenes
+场景
 ------
 
 .. image:: /img/scene_tree_example.png
 
-Now that the existence of nodes has been defined, the next logical
-step is to explain what a Scene is.
+有了节点的概念后，下一步就是要给你解释什么是场景了。
 
-A scene is composed of a group of nodes organized hierarchically (in
-tree fashion). It has the following properties:
+场景就是由一组按树状层级结构组织的节点组成。它有下列属性：
 
--  A scene always has only one root node.
--  Scenes can be saved to disk and loaded back.
--  Scenes can be *instanced* (more on that later).
--  Running a game means running a scene.
--  There can be several scenes in a project, but for it to start, one of
-   them must selected to be loaded first.
+-  一个场景只有一个根节点
+-  场景可以被保存到硬盘上并被加载回来
+-  场景可被*实例化* (稍后会有更多描述)
+-  运行一款游戏意味着在运行一个场景
+-  一个项目中可以有多个场景，但启动时必须指定其中一个用于初始加载的场景
 
-Basically, the Godot editor is a **scene editor**. It has plenty of
-tools for editing 2D and 3D scenes as well as user interfaces, but all
-the editor revolves around the concept of editing a scene and the nodes
-that compose it.
+Godot编辑器其实就是一个**场景编辑器**。它有丰富的用于编辑二维和三维场景的相关工具，这些工具都是围绕编辑节点和场景的概念的。
 
-Creating a new project
+创建项目
 ----------------------
 
-Theory is boring, so let's change subject and go practical. Following a
-long tradition in tutorials, the first project will be a hello world.
-For this, the editor will be used.
+光讲理论很无聊了吧，那让我们来点实践性的：搞个“Hello world”来用一下编辑器。
 
-When godot executable is run outside a project, the Project Manager
-appears. This helps developers manage their projects.
+当没有启动具体项目时，Godot会打开项目管理器，用于帮助开发者管理项目。
 
 .. image:: /img/project_manager.png
 
-To create a new project, the "New Project" option must be used. Choose
-and create a path for the project and specify the project name:
+点"New Project"创建新项目，这个时候需要选择项目路径并指定项目名称：
 
 .. image:: /img/create_new_project.png
 
-Editor
+编辑器
 ------
 
-Once the "New Project" is created, the next step is opening it. This
-will open the Godot editor. Here is how the editor looks when freshly
-opened:
+创建好新项目后，下一步就是打开它，这样就启动了Godot编辑器。编辑器的效果大致是这样：
 
 .. image:: /img/empty_editor.png
 
-As mentioned before, making games in Godot feels like being in a
-kitchen, so let's open the refrigerator and add some fresh nodes to the
-project. We'll begin with a Hello World! To do this, the "New Node"
-button must be pressed:
+上面提过，在Godot中制作游戏就像到了厨房，先打开冰箱，然后添加一些新鲜的节点到项目中。让我们开始“Hello World”吧，点击"New Node"按钮：
 
 .. image:: /img/newnode_button.png
 
-This will open the Create Node dialog, showing the long list of nodes
-that can be created:
+打开“Create Node”对话框，界面显示了一长列可用节点吧：
 
 .. image:: /img/node_classes.png
 
-From there, select the "Label" node first. Searching for it is probably
-the quickest way:
+先选择“Label”节点，可以在上方快速搜索：
 
 .. image:: /img/node_search_label.png
 
-And finally, create the Label! A lot happens when Create is pressed:
+最后，创建标签！“Create”按钮被点击后，会发生很多事情：
 
 .. image:: /img/editor_with_label.png
 
-First of all, the scene is changed to the 2D editor (because Label is
-a 2D Node type), and the Label appears, selected, at the top left
-corner of the viewport.
+首先，场景变成2D编辑器，因为Label是个二维节点，Label会出现左上角、被选中状态。
 
-The node appears in the scene tree editor (box in the top left
-corner), and the label properties appear in the Inspector (box on the
-right side).
+同时，该节点出现在场景树编辑器,标签属性则出现在Inspector。
 
-The next step will be to change the "Text" Property of the label, let's
-change it to "Hello, World!":
+下面，我们来修改该标签的“Text”属性，改成"Hello, World!"：
 
 .. image:: /img/hw.png
 
-Ok, everything's ready to run the scene! Press the PLAY SCENE Button on
-the top bar (or hit F6):
+好了，这样就可以运行场景了！点击顶部栏的播放场景的按钮或按F6：
 
 .. image:: /img/playscene.png
 
-Aaaand... Oops.
+哎呀... 
 
 .. image:: /img/neversaved.png
 
-Scenes need to be saved to be run, so save the scene to something like
-hello.scn in Scene -> Save:
+提示场景需要保存了才能运行；保存场景，文件名比如叫做 hello.scn：
 
 .. image:: /img/save_scene.png
 
-And here's when something funny happens. The file dialog is a special
-file dialog, and only allows to save inside the project. The project
-root is "res://" which means "resource path. This means that files can
-only be saved inside the project. For the future, when doing file
-operations in Godot, remember that "res://" is the resource path, and no
-matter the platform or install location, it is the way to locate where
-resource files are from inside the game.
+该场景只允许保存在该项目中。项目的根"res://"代表资源路径。
 
-After saving the scene and pressing run scene again, the "Hello, World!"
-demo should finally execute:
+保存场景后再点“运行场景”，“Hello, World!”这个demo应该就开始执行了：
 
 .. image:: /img/helloworld.png
 
-Success!
+搞定!
 
 .. _doc_scenes_and_nodes-configuring_the_project:
 
-Configuring the project
+配置项目
 -----------------------
 
-Ok, It's time to do some configuration to the project. Right now, the
-only way to run something is to execute the current scene. Projects,
-however, have several scenes so one of them must be set as the main
-scene. This scene is the one that will be loaded at the time the project
-is run.
+项目中，如果有多个场景，必须指定一个主场景 - 在运行时初始被加入的。
 
-These settings are all stored in the engine.cfg file, which is a
-plaintext file in win.ini format, for easy editing. There are dozens of
-settings that can be set in that file to alter how a project executes,
-so to make matters simpler, a project setting dialog exists, which is
-sort of a frontend to editing engine.cfg
+这些设置都被保存在engine.cfg中，这是一种win.ini这样的纯文本格式，编辑起来很简单。因为项目设置项很多，所以可以通过“项目设置”对话框来直观操作。
 
-To access that dialog, simply go to Scene -> Project Settings.
+通过菜单Scene -> Project Settings可以访问该对话框。
 
-Once the window opens, the task will be to select a main scene. This can
-be done easily by changing the application/main_scene property and
-selecting 'hello.scn'.
+该窗口被打开时，要选择主场景，很简单，切换到application/main_scene属性，选择'hello.scn'即可。
 
 .. image:: /img/main_scene.png
 
-With this change, pressing the regular Play button (or F5) will run the
-project, no matter which scene is being edited.
+完成设置后，点“运行按钮”或F5键会开始运行该项目。
 
-Going back to the project settings dialog. This dialog provides a lot
-of options that can be added to engine.cfg and show their default
-values. If the default value is ok, then there isn't any need to
-change it.
+再打开项目设置对话框，其中显示了很多可用选项及默认值。如果默认值没问题的话就不需要动它。
 
-When a value is changed, a tick is marked to the left of the name.
-This means that the property will be saved to the engine.cfg file and
-remembered.
+当其中一项值被改动，其名称左侧会出现一个标记，代表该值将会保存到engine.cfg文件中。
 
-As a side note, for future reference and a little out of context (this
-is the first tutorial after all!), it is also possible to add custom
-configuration options and read them in run-time using the
-:ref:`Globals <class_Globals>` singleton.
+其实还可以添加自定义配置选项并在运行时被读入
+:ref:`Globals <class_Globals>` 单例对象中.
 
-To be continued...
+未完待续...
 ------------------
 
-This tutorial talks about "scenes and nodes", but so far there has been
-only *one* scene and *one* node! Don't worry, the next tutorial will
-deal with that...
+下一节会涉及多个场景及多个节点！
