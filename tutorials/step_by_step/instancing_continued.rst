@@ -1,77 +1,47 @@
 .. _doc_instancing_continued:
 
-Instancing (continued)
+场景实例化（续）
 ======================
 
-Recap
+要点
 -----
 
-Instancing has many handy uses. At a glance, with instancing you have:
+场景实例化带来很多便利的用法，总体来说有：
 
--  The ability to subdivide scenes and make them easier to manage.
--  A more flexible alternative to prefabs (and much more powerful given
-   instances work at many levels).
--  A way to design more complex game flows or even UIs (UI Elements are
-   nodes in Godot too).
+-  将场景细分，更便于管理
+-  相对于某些引擎中的Prefab组件更灵活,并且在许多方面更强大
+-  是一种设计更复杂的游戏流程甚至UI的方式
 
-Design language
+这是一种设计语言
 ---------------
 
-But the real strong point of instancing scenes is that it works as an
-excellent design language. This is pretty much what makes Godot special
-and different to any other engine out there. The entire engine was designed
-from the ground up around this concept.
+场景实例化真正强悍的地方就在于它是以一种卓越的设计语言的机制运行的。这一点使得Godot区别于其它引擎，并有很大的不同。Godot整个引擎从底层开始都是围绕着这个概念进行设计的。
 
-When making games with Godot, the recommended approach is to leave aside
-other design patterns such as MVC or Entity-Relationship diagrams and
-start thinking games in a more natural way. Start by imagining the
-visible elements in a game, the ones that can be named not by just a
-programmer but by anyone.
+在使用Godot制作游戏时，建议把MVC或ER图这样的设计模式先抛开一边，而开始用更自然的方式思考游戏：设想出游戏中的可见元素，这些元素可由任何人去命名，而不仅仅是开发者。
 
-For example, here's how a simple shooter game can be imagined:
+例如，这是一款简单的射击游戏能设想出的元素：
 
 .. image:: /img/shooter_instancing.png
 
-It's pretty easy to come up with a diagram like this for almost any kind
-of game. Just write down the elements that come to mind, and then the
-arrows that represent ownership.
+几乎对于任意类型的游戏，提炼出这样一张图（Diagram）都非常简单。仅需将脑子里出现的元素记下来，然后用带剪头的线标准出所代表的所有者关系就行了。
 
-Once this diagram exists, making a game is about creating a scene for
-each of those nodes, and use instancing (either by code or from the editor) to represent ownership.
+一旦这种图确定好了，制作游戏的过程就是先为图上的这些节点创建相应场景，然后利用场景实例化（通过编码或编辑器直观操作）来代表其所有者关系。
 
-Most of the time programming games (or software in general) is spent
-designing an architecture and fitting game components to that
-architecture. Designing based on scenes replaces that and makes
-development much faster and more straightforward, allowing to
-concentrate on the game itself. Scene/Instancing based design is
-extremely efficient at saving a large part of that work, since most of
-the components designed map directly to a scene. This way, none or
-little architectural code is needed.
+对于大多数的游戏开发或通常意义的软件开发来说，时间都是花费在架构设计及填充架构中的游戏组件上。而基于场景的设计使得整个开发过程变快很多，而且更直观，让你可以更关注游戏本身的东西。基于场景/场景实例化的设计，由于多数的组件直接对应到某个场景，极大的节省了那部分架构设计的工作。这样，项目中几乎不需要或者仅需少量架构性代码即可。
 
-The following is a more complex example, an open-world type of game with
-lots of assets and parts that interact:
+下面是一个较为复杂的例子 - 一个开放世界类型的游戏，带有很多资源文件（Asset），并有些交互效果：
 
 .. image:: /img/openworld_instancing.png
 
-Make some rooms with furniture, then connect them. Make a house later,
-and use those rooms as the interior.
+先制作一些带有家具的房间，将它们联系起来。再制作房子，并将那些房间作为其内部构成。
 
-The house can be part of a citadel, which has many houses. Finally the
-citadel can be put on the world map terrain. Add also guards and other
-NPCs to the citadel by previously creating their scenes.
+房子可以作为城堡的一部分，城堡中会有很多房子。最后，城堡可以放到世界地形图中。还可以将前面创建的守卫及其它非玩家角色(NPC)添加给城堡。
 
-With Godot, games can grow as quickly as desired, as only more scenes
-have to be made and instanced. The editor UI is also designed to be
-operated by non programmers too, so an usual team development process
-involves 3D or 2D artists, level designers, game designers, animators,
-etc all working with the editor interface.
+使用Godot时，游戏可以根据需要快速壮大，因为仅仅是更多的子场景在被创建和实例化。Godot的编辑器也是面向非程序员的操作习惯设计的，常规团队开发环境的角色：三维或二维设计师、关卡设计师、游戏设计师、动画师等等都能使用编辑器界面进行协作。
 
-Information overload!
+信息量有点大了是吗？！
 ---------------------
 
-Do not worry too much, the important part of this tutorial is to create
-awareness on how scenes and instancing are used in real life. The best
-way to understand all this is to make some games.
+不用有太多担心啦，这部分文档的最重要目的让你对实际开发过程中场景和实例化的用法产生一些认知。要想全部理解，最好的方式是动手去做些游戏。
 
-Everything will become very obvious when put to practice, so, please do
-not scratch your head and go on to the next tutorial!
+在实践过程中，所有的东西都会变得明晰起来的，所以不用挠头了，继续开下一篇！
