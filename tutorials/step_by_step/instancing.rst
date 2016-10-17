@@ -71,7 +71,7 @@ project by using the 'Edit' option.
 
 .. image:: /img/instmanyrun.png
 
-这就是为什么叫场景被实例化更准确的原因！
+这就是为什么叫场景被实例化，而不是场景被载入，因为前者更准确的反映了其原理！
 
 编辑实例
 -----------------
